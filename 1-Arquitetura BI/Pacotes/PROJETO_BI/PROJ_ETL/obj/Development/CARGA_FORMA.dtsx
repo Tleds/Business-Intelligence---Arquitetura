@@ -1,0 +1,856 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/4/2018 3:25:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-HH4HHD6"
+  DTS:CreatorName="DESKTOP-HH4HHD6\Tiago"
+  DTS:DTSID="{7A8180FA-50F9-4F60-8FC6-30A8802D58D5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="CARGA_FORMA"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{3E8C9EB8-2182-480C-9319-24770BBEFB90}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CARGA DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{7F584609-0FF7-4D13-BAC5-91AB6A979810}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CARGA DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CARGA DW\DIM_FORMA"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{FD23E579-A81F-47A7-A886-163F4C779417}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DIM_FORMA"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Destino OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[DIM_FORMA]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{864F07A0-35EB-4562-BE6C-D96050F99792}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-HH4HHD6.COMERCIO_DW 1]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[NOME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NOME"
+                          externalMetadataColumnId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NOME]"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[NOME]" />
+                        <inputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          cachedDataType="i4"
+                          cachedName="IDFORMA_PAGAMENTO"
+                          externalMetadataColumnId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORMA]"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[SKFORMA]"
+                          dataType="i4"
+                          name="SKFORMA" />
+                        <externalMetadataColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORMA]"
+                          dataType="i4"
+                          name="IDFORMA" />
+                        <externalMetadataColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_FORMA_PAGAMENTO"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [IDFORMA_PAGAMENTO]
+    ,[NOME]
+  FROM [COMERCIO_STAGE].[dbo].[ST_FORMA_PAGAMENTO]</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Connections[OleDbConnection]"
+                      connectionManagerID="{FEDAE41F-67A8-40D2-A5EC-D8E12863BB5D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-HH4HHD6.COMERCIO_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          name="IDFORMA_PAGAMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[NOME]"
+                          length="50"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[NOME]"
+                          name="NOME"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          name="IDFORMA_PAGAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          name="IDFORMA_PAGAMENTO" />
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[NOME]"
+                          name="NOME" />
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\CARGA DW\DIM_FORMA.Paths[Saída de Origem OLE DB]"
+                  endId="Package\CARGA DW\DIM_FORMA\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CARGA STAGE"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{398DD0AA-0855-436D-A1E0-B27910A1B616}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CARGA STAGE">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{29805894-30B6-47F8-BB0B-1A2361654B75}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STAGE_FORMA_PAGAMENTO"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="FORMA_PAGAMENTO"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT IDFORMA_PAGAMENTO,FORMA FROM FORMA_PAGAMENTO</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Connections[OleDbConnection]"
+                      connectionManagerID="{BE908877-F14F-4712-BFD9-D09297749B8F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-HH4HHD6.COMERCIO_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          name="IDFORMA_PAGAMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[FORMA]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[FORMA]"
+                          length="40"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[FORMA]"
+                          name="FORMA"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          name="IDFORMA_PAGAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].ExternalColumns[FORMA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="FORMA" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          name="IDFORMA_PAGAMENTO" />
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[FORMA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[FORMA]"
+                          name="FORMA" />
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_FORMA_PAGAMENTO"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_FORMA_PAGAMENTO]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Connections[OleDbConnection]"
+                      connectionManagerID="{FEDAE41F-67A8-40D2-A5EC-D8E12863BB5D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-HH4HHD6.COMERCIO_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].Columns[IDFORMA_PAGAMENTO]"
+                          cachedDataType="i4"
+                          cachedName="IDFORMA_PAGAMENTO"
+                          externalMetadataColumnId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[IDFORMA_PAGAMENTO]" />
+                        <inputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].Columns[FORMA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="FORMA"
+                          externalMetadataColumnId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].ExternalColumns[NOME]"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB].Columns[FORMA]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORMA_PAGAMENTO]"
+                          dataType="i4"
+                          name="IDFORMA_PAGAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO.Paths[Saída de Origem OLE DB]"
+                  endId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CARGA STAGE\TRUNCATE ST_FORMA_PAGAMENTO"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{D1422DD3-4BBE-47E2-BD28-80281973A9B9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE ST_FORMA_PAGAMENTO"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FEDAE41F-67A8-40D2-A5EC-D8E12863BB5D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE ST_FORMA_PAGAMENTO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CARGA STAGE.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{2F32F6D3-45DD-47DF-A3AA-6F3B7F7287B1}"
+          DTS:From="Package\CARGA STAGE\TRUNCATE ST_FORMA_PAGAMENTO"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{45C36B53-E040-43EF-9349-8E4BA2A3598F}"
+      DTS:From="Package\CARGA STAGE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\CARGA DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="253,42"
+          Id="Package\CARGA STAGE\TRUNCATE ST_FORMA_PAGAMENTO"
+          TopLeft="5.5,10.5" />
+        <EdgeLayout
+          Id="Package\CARGA STAGE.PrecedenceConstraints[Restrição]"
+          TopLeft="258.5,29">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="130,0"
+              Start="0,0"
+              End="122.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="122.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="218,42"
+          Id="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO"
+          TopLeft="388.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="612,107"
+          Size="612,150"
+          Id="Package\CARGA STAGE"
+          TopLeft="28,51" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\CARGA DW\DIM_FORMA"
+          TopLeft="96,35" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="340,133"
+          Size="340,176"
+          Id="Package\CARGA DW"
+          TopLeft="168,254" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="336,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO"
+          TopLeft="84,44" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO"
+          TopLeft="401,43" />
+        <EdgeLayout
+          Id="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO.Paths[Saída de Origem OLE DB]"
+          TopLeft="264,64.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="137,0"
+              Start="0,0"
+              End="129.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="129.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\FORMA_PAGAMENTO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA STAGE\STAGE_FORMA_PAGAMENTO\ST_FORMA_PAGAMENTO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\CARGA DW\DIM_FORMA">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\CARGA DW\DIM_FORMA\Destino OLE DB"
+          TopLeft="68,158" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO"
+          TopLeft="51,31" />
+        <EdgeLayout
+          Id="Package\CARGA DW\DIM_FORMA.Paths[Saída de Origem OLE DB]"
+          TopLeft="147.25,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA DW\DIM_FORMA\Destino OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA DW\DIM_FORMA\ST_FORMA_PAGAMENTO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
